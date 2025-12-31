@@ -40,7 +40,7 @@ export function Showcase() {
             <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow bg-card">
               <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent relative">
                 <img
-                  src={`/.jpg?height=400&width=600&query=${item.query}`}
+                  src="/placeholder.jpg"
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />

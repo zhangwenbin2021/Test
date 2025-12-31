@@ -45,7 +45,7 @@ export function Reviews() {
                   <p className="text-sm text-muted-foreground">{review.role}</p>
                 </div>
               </div>
-              <p className="text-muted-foreground leading-relaxed">"{review.content}"</p>
+              <p className="text-muted-foreground leading-relaxed">&ldquo;{review.content}&rdquo;</p>
             </Card>
           ))}
         </div>

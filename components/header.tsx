@@ -22,7 +22,9 @@ export function Header() {
             FAQ
           </a>
         </nav>
-        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Try Now</Button>
+        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <a href="#editor">Try Now</a>
+        </Button>
       </div>
     </header>
   )
