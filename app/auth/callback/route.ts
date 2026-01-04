@@ -13,8 +13,12 @@ export async function GET(request: NextRequest) {
   const next = safeNextPath(requestUrl.searchParams.get("next"))
 
   if (code) {
-    const supabase = await createClient()
-    await supabase.auth.exchangeCodeForSession(code)
+    try {
+      const supabase = await createClient()
+      await supabase.auth.exchangeCodeForSession(code)
+    } catch {
+      return NextResponse.redirect(`${requestUrl.origin}/login?error=${encodeURIComponent("Auth callback failed.")}`)
+    }
   }
 
   const forwardedHost = request.headers.get("x-forwarded-host")
@@ -30,4 +34,3 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.redirect(`${requestUrl.origin}${next}`)
 }
-

@@ -4,6 +4,18 @@ function requiredEnv(name: string) {
   return value
 }
 
+export function getSupabaseEnv() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY
+
+  if (!url || !key) return null
+
+  return { url, key }
+}
+
 export function getSupabaseUrl() {
   return requiredEnv("NEXT_PUBLIC_SUPABASE_URL")
 }

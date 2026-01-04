@@ -16,8 +16,15 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: { message: "Unsupported provider." } }, { status: 400 })
   }
 
-  const supabase = await createClient()
   const origin = requestUrl.origin
+
+  let supabase: Awaited<ReturnType<typeof createClient>>
+  try {
+    supabase = await createClient()
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Missing Supabase env vars."
+    return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(message)}`)
+  }
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
@@ -37,4 +44,3 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.redirect(data.url)
 }
-
