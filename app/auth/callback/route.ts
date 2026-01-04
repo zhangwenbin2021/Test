@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { createClient } from "@/lib/supabase/server"
+import { getRequestOrigin } from "@/lib/request-origin"
 
 function safeNextPath(next: string | null) {
   if (!next) return "/"
@@ -11,26 +12,16 @@ export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url)
   const code = requestUrl.searchParams.get("code")
   const next = safeNextPath(requestUrl.searchParams.get("next"))
+  const origin = getRequestOrigin(request)
 
   if (code) {
     try {
       const supabase = await createClient()
       await supabase.auth.exchangeCodeForSession(code)
     } catch {
-      return NextResponse.redirect(`${requestUrl.origin}/login?error=${encodeURIComponent("Auth callback failed.")}`)
+      return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent("Auth callback failed.")}`)
     }
   }
 
-  const forwardedHost = request.headers.get("x-forwarded-host")
-  const isDev = process.env.NODE_ENV === "development"
-
-  if (isDev) {
-    return NextResponse.redirect(`${requestUrl.origin}${next}`)
-  }
-
-  if (forwardedHost) {
-    return NextResponse.redirect(`https://${forwardedHost}${next}`)
-  }
-
-  return NextResponse.redirect(`${requestUrl.origin}${next}`)
+  return NextResponse.redirect(`${origin}${next}`)
 }

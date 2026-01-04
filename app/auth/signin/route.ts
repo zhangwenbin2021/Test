@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { createClient } from "@/lib/supabase/server"
+import { getRequestOrigin } from "@/lib/request-origin"
 
 function safeNextPath(next: string | null) {
   if (!next) return "/"
@@ -16,7 +17,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: { message: "Unsupported provider." } }, { status: 400 })
   }
 
-  const origin = requestUrl.origin
+  const origin = getRequestOrigin(request)
 
   let supabase: Awaited<ReturnType<typeof createClient>>
   try {
