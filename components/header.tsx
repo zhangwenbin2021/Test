@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { AuthControls } from "@/components/auth-controls"
 
 export function Header() {
   return (
@@ -22,9 +23,12 @@ export function Header() {
             FAQ
           </a>
         </nav>
-        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-          <a href="#editor">Try Now</a>
-        </Button>
+        <div className="flex items-center gap-3">
+          <AuthControls />
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <a href="#editor">Try Now</a>
+          </Button>
+        </div>
       </div>
     </header>
   )
