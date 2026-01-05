@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card">
@@ -17,19 +19,19 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Product</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#features" className="hover:text-foreground transition-colors">
+                <Link href="/#features" className="hover:text-foreground transition-colors">
                   Features
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#showcase" className="hover:text-foreground transition-colors">
+                <Link href="/#showcase" className="hover:text-foreground transition-colors">
                   Examples
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/pricing" className="hover:text-foreground transition-colors">
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="hover:text-foreground transition-colors">

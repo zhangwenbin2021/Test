@@ -2,31 +2,32 @@ import { createClient } from "@/lib/supabase/server"
 import { Button } from "@/components/ui/button"
 
 export async function AuthControls() {
+  let user: { email?: string | null } | null = null
+
   try {
     const supabase = await createClient()
-    const {
-      data: { user },
-    } = await supabase.auth.getUser()
-
-    if (!user) {
-      return (
-        <Button asChild variant="secondary">
-          <a href="/login">Sign in</a>
-        </Button>
-      )
-    }
-
-    return (
-      <div className="flex items-center gap-3">
-        <span className="hidden sm:block text-sm text-muted-foreground max-w-48 truncate">{user.email}</span>
-        <form action="/auth/signout" method="post">
-          <Button type="submit" variant="outline" className="bg-transparent">
-            Sign out
-          </Button>
-        </form>
-      </div>
-    )
+    const res = await supabase.auth.getUser()
+    user = res.data.user
   } catch {
     return null
   }
+
+  if (!user) {
+    return (
+      <Button asChild variant="secondary">
+        <a href="/login">Sign in</a>
+      </Button>
+    )
+  }
+
+  return (
+    <div className="flex items-center gap-3">
+      <span className="hidden xl:block text-sm text-muted-foreground max-w-40 truncate">{user.email}</span>
+      <form action="/auth/signout" method="post">
+        <Button type="submit" variant="outline" className="bg-transparent">
+          Sign out
+        </Button>
+      </form>
+    </div>
+  )
 }

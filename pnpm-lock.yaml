@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@creem_io/nextjs':
+        specifier: ^0.4.0
+        version: 0.4.0(next@16.0.10(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.69.0(react@19.2.0))
@@ -272,6 +275,12 @@ packages:
   '@babel/types@7.28.5':
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
+
+  '@creem_io/nextjs@0.4.0':
+    resolution: {integrity: sha512-sJMHNu5gtehFI+y0IKHEYt3wrIxmCfRlNKOzH0340suy7fqNLKijAJ3m3338/GnSD71V1/t0wNNMtOtKniopjQ==}
+    peerDependencies:
+      next: '>=13.0.0'
+      react: '>=18.0.0'
 
   '@date-fns/tz@1.2.0':
     resolution: {integrity: sha512-LBrd7MiJZ9McsOgxqWX7AaxrDjcFVjWH/tIKJd7pnR7McaslGYOP1QmmiBXdJH/H/yLCT+rcQ7FaPBUxRGUtrg==}
@@ -1749,6 +1758,15 @@ packages:
     resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
     engines: {node: '>=18'}
 
+  creem@0.4.0:
+    resolution: {integrity: sha512-1RENze+vqUSq478DzisYaFuHmHt24QKg2zASuThQ9GqXi1XnW1KQa6ekuO0rA2RGqiDSYyfR6+DxaGJBYuVghg==}
+    hasBin: true
+    peerDependencies:
+      '@modelcontextprotocol/sdk': '>=1.5.0 <1.10.0'
+    peerDependenciesMeta:
+      '@modelcontextprotocol/sdk':
+        optional: true
+
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -3205,6 +3223,14 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@creem_io/nextjs@0.4.0(next@16.0.10(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      creem: 0.4.0
+      next: 16.0.10(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+    transitivePeerDependencies:
+      - '@modelcontextprotocol/sdk'
 
   '@date-fns/tz@1.2.0': {}
 
@@ -4684,6 +4710,10 @@ snapshots:
   convert-source-map@2.0.0: {}
 
   cookie@1.1.1: {}
+
+  creem@0.4.0:
+    dependencies:
+      zod: 3.25.76
 
   cross-spawn@7.0.6:
     dependencies:
