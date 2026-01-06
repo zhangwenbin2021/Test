@@ -1,7 +1,7 @@
 "use client"
 
 import { Check, Sparkles } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -132,26 +132,7 @@ export function PricingTable({
   customerEmail: string | null
   productIds: ProductIds
 }) {
-  const billingOptions: Billing[] = ["monthly", "annually", "one-time"]
-
-  const hasAnyProductForBilling = (target: Billing) => {
-    const plans = buildPlans(target)
-    return plans.some((plan) => Boolean(productIds[plan.productIdEnv]))
-  }
-
-  const getDefaultBilling = (): Billing => {
-    if (hasAnyProductForBilling("annually")) return "annually"
-    const firstEnabled = billingOptions.find(hasAnyProductForBilling)
-    return firstEnabled ?? "annually"
-  }
-
-  const [billing, setBilling] = useState<Billing>(() => getDefaultBilling())
-
-  useEffect(() => {
-    if (hasAnyProductForBilling(billing)) return
-    setBilling(getDefaultBilling())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productIds])
+  const [billing, setBilling] = useState<Billing>("monthly")
 
   const plans = useMemo(() => buildPlans(billing), [billing])
 
@@ -160,15 +141,11 @@ export function PricingTable({
       <div className="flex justify-center">
         <Tabs value={billing} onValueChange={(v) => setBilling(v as Billing)}>
           <TabsList>
-            <TabsTrigger value="monthly" disabled={!hasAnyProductForBilling("monthly")}>
-              Monthly
-            </TabsTrigger>
-            <TabsTrigger value="annually" disabled={!hasAnyProductForBilling("annually")}>
+            <TabsTrigger value="monthly">Monthly</TabsTrigger>
+            <TabsTrigger value="annually">
               Annually <span className="ml-2 hidden sm:inline text-muted-foreground">(save ~30%)</span>
             </TabsTrigger>
-            <TabsTrigger value="one-time" disabled={!hasAnyProductForBilling("one-time")}>
-              One-time
-            </TabsTrigger>
+            <TabsTrigger value="one-time">One-time</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
