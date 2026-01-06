@@ -1,8 +1,8 @@
 "use client"
 
-import { CreemCheckout } from "@creem_io/nextjs"
 import { Check, Sparkles } from "lucide-react"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -132,7 +132,26 @@ export function PricingTable({
   customerEmail: string | null
   productIds: ProductIds
 }) {
-  const [billing, setBilling] = useState<Billing>("annually")
+  const billingOptions: Billing[] = ["monthly", "annually", "one-time"]
+
+  const hasAnyProductForBilling = (target: Billing) => {
+    const plans = buildPlans(target)
+    return plans.some((plan) => Boolean(productIds[plan.productIdEnv]))
+  }
+
+  const getDefaultBilling = (): Billing => {
+    if (hasAnyProductForBilling("annually")) return "annually"
+    const firstEnabled = billingOptions.find(hasAnyProductForBilling)
+    return firstEnabled ?? "annually"
+  }
+
+  const [billing, setBilling] = useState<Billing>(() => getDefaultBilling())
+
+  useEffect(() => {
+    if (hasAnyProductForBilling(billing)) return
+    setBilling(getDefaultBilling())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productIds])
 
   const plans = useMemo(() => buildPlans(billing), [billing])
 
@@ -141,11 +160,15 @@ export function PricingTable({
       <div className="flex justify-center">
         <Tabs value={billing} onValueChange={(v) => setBilling(v as Billing)}>
           <TabsList>
-            <TabsTrigger value="monthly">Monthly</TabsTrigger>
-            <TabsTrigger value="annually">
+            <TabsTrigger value="monthly" disabled={!hasAnyProductForBilling("monthly")}>
+              Monthly
+            </TabsTrigger>
+            <TabsTrigger value="annually" disabled={!hasAnyProductForBilling("annually")}>
               Annually <span className="ml-2 hidden sm:inline text-muted-foreground">(save ~30%)</span>
             </TabsTrigger>
-            <TabsTrigger value="one-time">One-time</TabsTrigger>
+            <TabsTrigger value="one-time" disabled={!hasAnyProductForBilling("one-time")}>
+              One-time
+            </TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
@@ -202,13 +225,21 @@ export function PricingTable({
 
               <CardFooter>
                 {productId ? (
-                  <CreemCheckout productId={productId} customer={customerEmail ? { email: customerEmail } : undefined}>
-                    <Button
-                      className={cn("w-full", plan.highlight && "bg-primary text-primary-foreground hover:bg-primary/90")}
+                  <Button
+                    asChild
+                    className={cn("w-full", plan.highlight && "bg-primary text-primary-foreground hover:bg-primary/90")}
+                  >
+                    <Link
+                      href={(() => {
+                        const params = new URLSearchParams()
+                        params.append("productId", productId)
+                        if (customerEmail) params.append("customer", JSON.stringify({ email: customerEmail }))
+                        return `/checkout?${params.toString()}`
+                      })()}
                     >
                       Get started
-                    </Button>
-                  </CreemCheckout>
+                    </Link>
+                  </Button>
                 ) : (
                   <Button className="w-full" disabled>
                     Get started
