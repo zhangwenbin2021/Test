@@ -8,10 +8,10 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span className="text-2xl">🍌</span>
-              <span className="text-xl font-bold">Nano Banana</span>
+              <span className="text-xl font-bold">CodeZS</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Transform any image with simple text prompts using advanced AI technology.
+              Edit images with text prompts using modern AI image models.
             </p>
           </div>
 
@@ -34,9 +34,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  API
-                </a>
+                <Link href="/#editor" className="hover:text-foreground transition-colors">
+                  Try Now
+                </Link>
               </li>
             </ul>
           </div>
@@ -45,24 +45,14 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/about" className="hover:text-foreground transition-colors">
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/contact" className="hover:text-foreground transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -71,26 +61,21 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/privacy" className="hover:text-foreground transition-colors">
                   Privacy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/terms" className="hover:text-foreground transition-colors">
                   Terms
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  License
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2025 Nano Banana. All rights reserved. Not affiliated with Google or other AI companies.</p>
+          <p>© 2026 CodeZS. All rights reserved. Independent service; not affiliated with third-party brands.</p>
         </div>
       </div>
     </footer>

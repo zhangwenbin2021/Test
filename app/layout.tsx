@@ -7,9 +7,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Nano Banana - AI Image Editor | Edit Photos with Text",
+  title: "CodeZS - AI Image Editor | Edit Photos with Text",
   description:
-    "Transform any image with simple text prompts. Advanced AI model for consistent character editing and scene preservation.",
+    "Edit images with text prompts using modern AI image models. Upload an image, describe changes, and generate results.",
   generator: "v0.app",
   icons: {
     icon: [

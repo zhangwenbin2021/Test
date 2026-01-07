@@ -8,7 +8,7 @@ export function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <span className="text-2xl">🍌</span>
-          <span className="text-xl font-bold text-balance">Nano Banana</span>
+          <span className="text-xl font-bold text-balance">CodeZS</span>
         </Link>
         <nav className="hidden md:flex flex-1 items-center justify-center gap-6 min-w-0">
           <Link href="/#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -17,14 +17,14 @@ export function Header() {
           <Link href="/#showcase" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Examples
           </Link>
-          <Link href="/#reviews" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Reviews
-          </Link>
           <Link href="/#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             FAQ
           </Link>
           <Link href="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Pricing
+          </Link>
+          <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Contact
           </Link>
         </nav>
         <div className="flex items-center gap-3 shrink-0">

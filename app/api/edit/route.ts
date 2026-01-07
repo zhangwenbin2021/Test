@@ -28,7 +28,7 @@ function getOpenRouterHeaders(request: Request, apiKey: string) {
   else if (origin) headers["HTTP-Referer"] = origin
 
   if (titleFromEnv) headers["X-Title"] = titleFromEnv
-  else headers["X-Title"] = "nano-banana-clone"
+  else headers["X-Title"] = "codezs"
 
   return headers
 }

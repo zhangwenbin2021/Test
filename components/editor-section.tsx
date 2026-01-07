@@ -86,10 +86,9 @@ export function EditorSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">Get Started</h2>
-          <p className="text-lg text-muted-foreground text-pretty">Try The AI Editor</p>
+          <p className="text-lg text-muted-foreground text-pretty">Try the AI editor</p>
           <p className="text-muted-foreground mt-2 text-pretty">
-            Experience the power of nano-banana&apos;s natural language image editing. Transform any photo with simple
-            text commands
+            Upload an image and describe changes in plain language. Results may vary based on the input and prompt.
           </p>
         </div>
 
@@ -100,7 +99,7 @@ export function EditorSection() {
                 <Sparkles className="w-5 h-5 text-primary" />
                 Prompt Engine
               </h3>
-              <p className="text-sm text-muted-foreground mb-6">Transform your image with AI-powered editing</p>
+              <p className="text-sm text-muted-foreground mb-6">Transform your image with text-guided editing</p>
             </div>
 
             <div className="space-y-4">
@@ -135,7 +134,7 @@ export function EditorSection() {
 
               <div>
                 <Label htmlFor="prompt" className="text-sm font-medium mb-2 block">
-                  Main Prompt
+                  Prompt
                 </Label>
                 <Textarea
                   id="prompt"
@@ -169,7 +168,7 @@ export function EditorSection() {
           <Card className="p-6 space-y-6 bg-card">
             <div>
               <h3 className="text-xl font-semibold mb-4">Output Gallery</h3>
-              <p className="text-sm text-muted-foreground">Your ultra-fast AI creations appear here instantly</p>
+              <p className="text-sm text-muted-foreground">Your results will appear here after generation</p>
             </div>
 
             {outputImages.length > 0 ? (
@@ -186,7 +185,7 @@ export function EditorSection() {
                     Clear
                   </Button>
                   <Button asChild>
-                    <a href={outputImages[0]} download="nano-banana.png">
+                    <a href={outputImages[0]} download="codezs.png">
                       Download
                     </a>
                   </Button>
@@ -195,7 +194,7 @@ export function EditorSection() {
             ) : (
               <div className="border-2 border-dashed border-border rounded-lg p-12 flex flex-col items-center justify-center min-h-80 text-center">
                 <Sparkles className="w-16 h-16 text-muted-foreground/50 mb-4" />
-                <p className="text-lg font-medium mb-2">Ready for instant generation</p>
+                <p className="text-lg font-medium mb-2">Ready to generate</p>
                 <p className="text-sm text-muted-foreground">Upload an image, enter a prompt, then click Generate</p>
               </div>
             )}
@@ -203,12 +202,13 @@ export function EditorSection() {
         </div>
 
         <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">Want more powerful image generation features?</p>
+          <p className="text-sm text-muted-foreground">Need help or have a billing question?</p>
           <Button asChild variant="link" className="text-primary">
-            <a href="#editor">Visit Full Generator →</a>
+            <a href="mailto:support@codezs.online">Contact support@codezs.online →</a>
           </Button>
         </div>
       </div>
     </section>
   )
 }
+

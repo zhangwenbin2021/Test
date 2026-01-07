@@ -6,24 +6,24 @@ const features = [
     icon: MessageSquare,
     title: "Natural Language Editing",
     description:
-      "Edit images using simple text prompts. Nano-banana AI understands complex instructions like GPT for images",
+      "Edit images using simple text prompts. Describe changes in plain language.",
   },
   {
     icon: Users,
     title: "Character Consistency",
     description:
-      "Maintain perfect character details across edits. This model excels at preserving faces and identities",
+      "Helps preserve important details (like faces) across edits when possible.",
   },
   {
     icon: ImageIcon,
     title: "Scene Preservation",
-    description: "Seamlessly blend edits with original backgrounds. Superior scene fusion compared to Flux Kontext",
+    description: "Designed to keep the overall scene coherent while applying your requested changes.",
   },
   {
     icon: Zap,
     title: "One-Shot Editing",
     description:
-      "Perfect results in a single attempt. Nano-banana solves one-shot image editing challenges effortlessly",
+      "Generate an edited result in one click, then iterate if you want refinements.",
   },
   {
     icon: Layers,
@@ -33,7 +33,7 @@ const features = [
   {
     icon: Sparkles,
     title: "AI UGC Creation",
-    description: "Create consistent AI influencers and UGC content. Perfect for social media and marketing campaigns",
+    description: "Create assets for social media and marketing workflows (results vary by prompt and input).",
   },
 ]
 
@@ -43,10 +43,10 @@ export function Features() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">Core Features</h2>
-          <p className="text-lg text-muted-foreground text-pretty">Why Choose Nano Banana?</p>
+          <p className="text-lg text-muted-foreground text-pretty">Why Choose CodeZS?</p>
           <p className="text-muted-foreground mt-2 max-w-3xl mx-auto text-pretty">
-            Nano-banana is the most advanced AI image editor on LMArena. Revolutionize your photo editing with natural
-            language understanding
+            A practical AI image editor for everyday edits, with clear pricing, reachable support, and transparent
+            policies.
           </p>
         </div>
 
